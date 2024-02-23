@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express'
 import prisma from '../../lib/prisma'
 import createHttpError from 'http-errors'
-import { IAddProductReq } from '@repo/types'
+import { IAddProductReq } from '@tiny/types'
 import { toInt } from 'radash'
 
 export async function getProducts(req: Request, res: Response, next: NextFunction) {

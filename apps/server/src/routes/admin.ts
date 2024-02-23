@@ -1,4 +1,4 @@
-import { ZAddProductReq } from '@repo/types'
+import { ZAddProductReq } from '@tiny/types'
 import express from 'express'
 import { addProduct, deleteProduct, editProduct, getProduct, getProducts } from '../controllers/admin/products'
 import { validateReqBody } from '../middlewares/validateZod'

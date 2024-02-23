@@ -9,7 +9,7 @@
 		"generate": "prisma generate"
 	},
 	"dependencies": {
-		"@repo/types": "*",
+		"@tiny/types": "*",
 		"@prisma/client": "^5.4.1",
 		"cors": "^2.8.5",
 		"dotenv": "^16.3.1",

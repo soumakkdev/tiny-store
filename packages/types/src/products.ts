@@ -31,7 +31,6 @@ export const ZOrderItem = z.object({
 	description: z.string().optional().nullable(),
 	category: z.string().optional().nullable(),
 	status: z.string(),
-	color: z.string(),
 	price: z.number(),
 	quantity: z.number(),
 	sku: z.string(),

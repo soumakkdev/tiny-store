@@ -26,6 +26,9 @@ export * from '@/components/table/ReactTable'
 
 export * from '@/components/tooltip/Tooltip'
 
+export * from '@/components/ui/separator'
+export * from '@/components/ui/label'
+
 export * from '@/lib/FormikField'
 export * from '@/lib/types'
 export * from '@/lib/utils'
