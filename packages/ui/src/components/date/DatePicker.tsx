@@ -41,10 +41,10 @@ export function DatePicker(props: IDatePicker) {
 					) : (
 						<span>Pick a date</span>
 					)}
-					<CalendarIcon className="ml-auto h-4 w-4 opacity-80" />
+					<CalendarIcon className="tw-ml-auto tw-h-4 tw-w-4 tw-opacity-80" />
 				</Button>
 			</PopoverTrigger>
-			<PopoverContent className="w-auto p-0" align="start">
+			<PopoverContent className="tw-w-auto tw-p-0" align="start">
 				<Calendar
 					fromDate={minDate ? dayjs(minDate).toDate() : undefined}
 					toDate={maxDate ? dayjs(maxDate).toDate() : undefined}
@@ -58,7 +58,7 @@ export function DatePicker(props: IDatePicker) {
 					initialFocus
 				/>
 
-				<div className="flex items-center justify-between border-t p-2">
+				<div className="tw-flex tw-items-center tw-justify-between tw-border-t tw-p-2">
 					<Button
 						size="sm"
 						variant="ghost"

@@ -1,7 +1,7 @@
 import { cn } from '@/lib/utils'
 import { flexRender, getCoreRowModel, useReactTable } from '@tanstack/react-table'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../ui/table'
-import Loader from '../loader/Loader'
+import { Loader } from '../loader/Loader'
 
 interface IReactTable {
 	resizable?: boolean
@@ -23,28 +23,28 @@ export const ReactTable = ({ columns, data, onRowClick, resizable, className, is
 	return (
 		<div
 			className={cn(
-				'relative w-full h-full flex-1 flex flex-col overflow-auto ring-1 ring-border sm:rounded-lg',
-				{ 'pointer-events-none overflow-hidden': isLoading },
+				'tw-relative tw-w-full tw-h-full tw-flex-1 tw-flex tw-flex-col tw-overflow-auto tw-ring-1 tw-ring-border sm:tw-rounded-lg',
+				{ 'tw-pointer-events-none tw-overflow-hidden': isLoading },
 				className
 			)}
 		>
 			{isLoading && (
-				<div className="absolute inset-0 backdrop-blur-sm">
+				<div className="tw-absolute tw-inset-0 tw-backdrop-blur-sm">
 					<Loader />
 				</div>
 			)}
 
-			<Table className="min-w-full divide-y divide-border" style={{ width: table.getCenterTotalSize() }}>
-				<TableHeader className="min-w-full divide-y divide-border">
+			<Table className="tw-min-w-full tw-divide-y tw-divide-border" style={{ width: table.getCenterTotalSize() }}>
+				<TableHeader className="tw-min-w-full tw-divide-y tw-divide-border">
 					{table.getHeaderGroups().map((headerGroup) => (
-						<TableRow key={headerGroup.id} className={cn('divide-x divide-border w-[fit-content]', { flex: resizable })}>
+						<TableRow key={headerGroup.id} className={cn('tw-divide-x tw-divide-border tw-w-[fit-content]', { flex: resizable })}>
 							{headerGroup.headers.map((header) => (
 								<TableHead
 									key={header.id}
 									style={{
 										width: header.getSize(),
 									}}
-									className="sticky top-0 z-10 whitespace-nowrap h-auto px-3 py-2 text-left text-sm font-medium bg-muted text-foreground"
+									className="tw-sticky tw-top-0 tw-z-10 tw-whitespace-nowrap tw-h-auto tw-px-3 tw-py-2 tw-text-left tw-text-sm tw-font-medium tw-bg-muted tw-text-foreground"
 								>
 									{header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
 
@@ -68,7 +68,7 @@ export const ReactTable = ({ columns, data, onRowClick, resizable, className, is
 						{table.getRowModel().rows.map((row) => (
 							<TableRow
 								key={row.id}
-								className={cn('divide-x divide-border w-[fit-content]', { flex: resizable })}
+								className={cn('tw-divide-x tw-divide-border tw-w-[fit-content]', { flex: resizable })}
 								onClick={() => onRowClick?.(row.original)}
 							>
 								{row.getVisibleCells().map((cell) => (
@@ -77,7 +77,7 @@ export const ReactTable = ({ columns, data, onRowClick, resizable, className, is
 										style={{
 											width: cell.column.getSize(),
 										}}
-										className="whitespace-nowrap px-3 py-2 text-sm text-foreground"
+										className="tw-whitespace-nowrap tw-px-3 tw-py-2 tw-text-sm tw-text-foreground"
 									>
 										{flexRender(cell.column.columnDef.cell, cell.getContext())}
 									</TableCell>
@@ -88,7 +88,7 @@ export const ReactTable = ({ columns, data, onRowClick, resizable, className, is
 				) : null}
 			</Table>
 
-			{!data?.length ? <div className="flex-1 grid place-content-center h-full w-full ">No results found</div> : null}
+			{!data?.length ? <div className="tw-flex-1 tw-grid tw-place-content-center tw-h-full tw-w-full ">No results found</div> : null}
 		</div>
 	)
 }

@@ -1,7 +1,6 @@
-import TextField from '@/components/shared/fields/TextField'
 import useLoading from '@/hooks/useLoading'
 import { useAuth } from '@/lib/AuthContext'
-import { Button, FormikField } from '@tiny/ui'
+import { Button, FormikField, TextField } from '@tiny/ui'
 import { FormikProvider, useFormik } from 'formik'
 import { useRouter } from 'next/router'
 import { tryit } from 'radash'

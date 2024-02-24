@@ -19,10 +19,10 @@ export const AlertDialog = (props: IAlertDialog) => {
 			<DialogHeader title={title} />
 			{body}
 			<DialogFooter>
-				<Button type="button" onClick={onClose} variant="secondary" className="min-w-24" disabled={loading}>
+				<Button type="button" onClick={onClose} variant="secondary" className="tw-min-w-24" disabled={loading}>
 					Cancel
 				</Button>
-				<Button type="button" variant={danger ? 'destructive' : 'default'} onClick={onConfirm} className="min-w-24" loading={loading}>
+				<Button type="button" variant={danger ? 'destructive' : 'default'} onClick={onConfirm} className="tw-min-w-24" loading={loading}>
 					Confirm
 				</Button>
 			</DialogFooter>

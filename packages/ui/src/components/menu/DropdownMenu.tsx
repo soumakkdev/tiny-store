@@ -49,7 +49,7 @@ export function DropdownMenu(props: IMenu) {
 								<DropdownMenuItem
 									id={option.title?.toLowerCase()?.replace(/ /g, '-')}
 									onClick={option?.onClick}
-									className={cn('gap-3', { 'text-red-600 focus:text-red-600': option?.danger })}
+									className={cn('tw-gap-3', { 'tw-text-red-600 focus:tw-text-red-600': option?.danger })}
 								>
 									{option?.icon}
 									{option?.title}

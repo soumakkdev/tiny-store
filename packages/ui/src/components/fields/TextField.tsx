@@ -1,12 +1,13 @@
-import { Label, TextInput, TextInputProps } from '@tiny/ui'
 import React from 'react'
+import { TextInput, TextInputProps } from './TextInput'
+import { Label } from '../ui/label'
 
 interface ITextField extends TextInputProps {
 	label?: string
 	error?: string
 }
 
-export default function TextField(props: ITextField) {
+export function TextField(props: ITextField) {
 	const { label, id, error, ...rest } = props
 	return (
 		<div className="space-y-1">

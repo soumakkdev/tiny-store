@@ -24,7 +24,7 @@ interface ITooltipTrigger {
 Tooltip.Trigger = (props: ITooltipTrigger) => {
 	const { children, className, disabled } = props
 	return (
-		<TooltipTrigger asChild disabled={disabled} className={cn(className, 'disabled:opacity-60')} type="button">
+		<TooltipTrigger asChild disabled={disabled} className={cn(className, 'disabled:tw-opacity-60')} type="button">
 			{children}
 		</TooltipTrigger>
 	)
@@ -41,7 +41,7 @@ Tooltip.Content = (props: ITooltipContent) => {
 	const { children, className, arrow, arrowClassName } = props
 	return (
 		<TooltipContent className={className}>
-			{arrow ? <TooltipArrow className={cn('fill-slate-900', arrowClassName)} /> : null}
+			{arrow ? <TooltipArrow className={cn('tw-fill-slate-900', arrowClassName)} /> : null}
 			{children}
 		</TooltipContent>
 	)

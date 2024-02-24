@@ -27,11 +27,11 @@ export function Select(props: ISelect) {
 					id={id}
 					disabled={disabled}
 					className={cn(
-						'w-full',
+						'tw-w-full',
 						{
-							'h-8': size === 'sm',
-							'h-9': size === 'md',
-							'h-10': size === 'lg',
+							'tw-h-8': size === 'sm',
+							'tw-h-9': size === 'md',
+							'tw-h-10': size === 'lg',
 						},
 						className
 					)}

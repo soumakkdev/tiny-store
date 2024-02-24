@@ -10,9 +10,9 @@ export interface ISwitch extends Omit<SwitchProps, 'onChange'> {
 export function Switch(props: ISwitch) {
 	const { label, id, onChange, ...rest } = props
 	return (
-		<div className="flex items-center space-x-2">
+		<div className="tw-flex tw-items-center tw-space-x-2">
 			<SwitchBase id={id} onCheckedChange={onChange} {...rest} />
-			<Label htmlFor={id} className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+			<Label htmlFor={id} className="tw-text-sm tw-font-medium tw-leading-none peer-disabled:tw-cursor-not-allowed peer-disabled:tw-opacity-70">
 				{label}
 			</Label>
 		</div>

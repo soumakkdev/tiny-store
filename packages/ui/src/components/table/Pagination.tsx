@@ -61,16 +61,16 @@ export function Pagination({
 	const totalCountComponent = () => {
 		if (!totalCount) {
 			return (
-				<div className="hidden lg:flex">
-					<p className="text-primary text-sm">
+				<div className="tw-hidden lg:tw-flex">
+					<p className="tw-text-primary tw-text-sm">
 						Showing <span className="">0</span> of <span className="">0</span> results
 					</p>
 				</div>
 			)
 		}
 		return (
-			<div className="hidden md:flex">
-				<p className=" text-primary text-sm">
+			<div className="tw-hidden md:tw-flex">
+				<p className="tw-text-primary tw-text-sm">
 					Showing <span className="">{itemsPerPage * (currentPage - 1) + 1}</span> to <span className="">{upperLimit}</span> of{' '}
 					<span className="">{totalCount}</span> results
 				</p>
@@ -79,10 +79,10 @@ export function Pagination({
 	}
 
 	return (
-		<div className={clsx('flex sm:gap-3 items-center justify-between', className)}>
-			<div className="flex flex-row sm:flex-wrap items-center gap-2 lg:gap-4">
+		<div className={clsx('tw-flex sm:tw-gap-3 tw-tw-items-center tw-justify-between', className)}>
+			<div className="tw-flex tw-flex-row sm:tw-flex-wrap tw-tw-items-center tw-tw-gap-2 lg:tw-gap-4">
 				{/* {showPageSizeController && (
-					<div className='flex items-center gap-2'>
+					<div className='tw-flex tw-items-center tw-tw-gap-2'>
 						<p className='hidden md:block text-xs md:text-sm '>Items per page</p>
 						<Dropdown
 							options={pageSizeOptions}
@@ -99,11 +99,11 @@ export function Pagination({
 						/>
 					</div>
 				)} */}
-				<div className="flex items-center gap-2">
+				<div className="tw-flex tw-items-center tw-gap-2">
 					{/* {!hidePageInfo && totalCountComponent()} */}
 					{handleRefresh && (
 						<button
-							className="flex items-center px-2 py-1 rounded-md outline-none mt-[-4px]"
+							className="tw-flex tw-items-center tw-px-2 tw-py-1 tw-rounded-md tw-outline-none tw-mt-[-4px]"
 							onClick={async () => {
 								try {
 									setIsRefreshing(true)
@@ -116,14 +116,14 @@ export function Pagination({
 							disabled={isRefreshing}
 						>
 							<RefreshCwIcon
-								className={`${isRefreshing ? 'animate-spin' : ''} w-5 h-5 text-primary cursor-pointer`}
+								className={`${isRefreshing ? 'tw-animate-spin' : ''} tw-w-5 tw-h-5 tw-text-primary tw-cursor-pointer`}
 								style={{ animationDirection: 'reverse' }}
 							/>
 						</button>
 					)}
 				</div>
 			</div>
-			<div className="flex items-center gap-2">
+			<div className="tw-flex tw-items-center tw-gap-2">
 				{/* Jump to first page button */}
 				{!hideJumpBtns && (
 					<Tooltip>
@@ -136,15 +136,14 @@ export function Pagination({
 								}}
 								type="button"
 								variant="outline"
-								className="h-10 w-10 rounded-full flex items-center justify-center p-0"
-								// className='h-8 justify-center border text-primary px-2 md:px-4 py-1 font-bold'
+								className="tw-h-10 tw-w-10 tw-rounded-full tw-flex tw-items-center tw-justify-center tw-p-0"
 							>
-								<ChevronsLeft className="w-5 h-5 mr-0.5 text-muted-foreground" />
+								<ChevronsLeft className="tw-w-5 tw-h-5 tw-mr-0.5 tw-text-muted-foreground" />
 							</Button>
 						</Tooltip.Trigger>
 						<Tooltip.Content>
 							<div>
-								<p className="text-white text-xs font-light">Go to first page</p>
+								<p className="tw-text-white tw-text-xs tw-font-light">Go to first page</p>
 							</div>
 						</Tooltip.Content>
 					</Tooltip>
@@ -161,15 +160,14 @@ export function Pagination({
 							}}
 							type="button"
 							variant="outline"
-							className="h-10 w-10 rounded-full flex items-center justify-center p-0"
-							// className='h-8 justify-center border text-primary px-2 md:px-4 py-1 font-bold'
+							className="tw-h-10 tw-w-10 tw-rounded-full tw-flex tw-items-center tw-justify-center tw-p-0"
 						>
-							<ChevronLeft className="w-5 h-5 mr-0.5 text-muted-foreground" />
+							<ChevronLeft className="tw-w-5 tw-h-5 tw-mr-0.5 tw-text-muted-foreground" />
 						</Button>
 					</Tooltip.Trigger>
 					<Tooltip.Content>
 						<div>
-							<p className="text-white text-xs font-light">Prev</p>
+							<p className="tw-text-white tw-text-xs tw-font-light">Prev</p>
 						</div>
 					</Tooltip.Content>
 				</Tooltip>
@@ -189,13 +187,13 @@ export function Pagination({
 					</Tooltip.Trigger>
 					<Tooltip.Content>
 						<div>
-							<p className="text-white text-xs font-light">Go to page no.</p>
+							<p className="tw-text-white tw-text-xs tw-font-light">Go to page no.</p>
 						</div>
 					</Tooltip.Content>
 				</Tooltip>
 
 				{/* Show current page no info */}
-				<p className="text-sm  whitespace-nowrap">of {totalNoOfPages}</p>
+				<p className="tw-text-sm  tw-whitespace-nowrap">of {totalNoOfPages}</p>
 
 				{/* Go to next page button */}
 				<Tooltip>
@@ -208,14 +206,13 @@ export function Pagination({
 							}}
 							type="button"
 							variant="outline"
-							className="h-10 w-10 rounded-full flex items-center justify-center p-0"
-							// className='h-8 justify-center border text-primary px-2 md:px-4 py-1 font-bold'
+							className="tw-h-10 tw-w-10 tw-rounded-full tw-flex tw-items-center tw-justify-center tw-p-0"
 						>
-							<ChevronRight className="w-5 h-5 ml-0.5 text-muted-foreground" />
+							<ChevronRight className="tw-w-5 tw-h-5 tw-ml-0.5 tw-text-muted-foreground" />
 						</Button>
 					</Tooltip.Trigger>
 					<Tooltip.Content>
-						<p className="text-white text-xs font-light">Next</p>
+						<p className="tw-text-white tw-text-xs tw-font-light">Next</p>
 					</Tooltip.Content>
 				</Tooltip>
 
@@ -230,17 +227,17 @@ export function Pagination({
 									jumpToPage(totalNoOfPages)
 								}}
 								type="button"
-								className="h-10 w-10 rounded-full flex items-center justify-center p-0"
+								className="tw-h-10 tw-w-10 tw-rounded-full tw-flex tw-items-center tw-justify-center tw-p-0"
 								variant="outline"
 								// className='h-8 justify-center border text-primary px-2 md:px-4 py-1 font-bold'
 							>
-								<ChevronsRight className="w-5 h-5 ml-0.5 text-muted-foreground" />
+								<ChevronsRight className="tw-w-5 tw-h-5 tw-ml-0.5 tw-text-muted-foreground" />
 							</Button>
 						</Tooltip.Trigger>
 
 						<Tooltip.Content>
 							<div>
-								<p className="text-white text-xs font-light">Go to last page</p>
+								<p className="tw-text-white tw-text-xs tw-font-light">Go to last page</p>
 							</div>
 						</Tooltip.Content>
 					</Tooltip>
@@ -271,7 +268,7 @@ function PageInput({
 
 	return (
 		<input
-			className="h-9 w-16 border border-divider bg-background outline-none rounded-lg p-2 px-3 text-sm disabled:opacity-60"
+			className="tw-h-9 tw-w-16 tw-border tw-border-divider tw-bg-background tw-outline-none tw-rounded-lg tw-p-2 tw-px-3 tw-text-sm disabled:tw-opacity-60"
 			onChange={(event) => {
 				event.preventDefault()
 				const value = event.currentTarget.value

@@ -60,13 +60,13 @@ export function TimePicker(props: ITimePicker) {
 					) : (
 						<span>Pick a time</span>
 					)}
-					<ClockIcon className="ml-auto h-4 w-4 opacity-80" />
+					<ClockIcon className="tw-ml-auto tw-h-4 tw-w-4 tw-opacity-80" />
 				</Button>
 			</PopoverTrigger>
 
-			<PopoverContent className="w-auto p-0" align="start">
-				<div className="w-auto divide-x py-2 flex items-start h-52">
-					<div className="h-full overflow-auto px-2">
+			<PopoverContent className="tw-w-auto tw-p-0" align="start">
+				<div className="tw-w-auto tw-divide-x tw-py-2 tw-flex tw-items-start tw-h-52">
+					<div className="tw-h-full tw-overflow-auto tw-px-2">
 						{hours?.map((h) => (
 							<div
 								id={`h-${h}`}
@@ -76,8 +76,8 @@ export function TimePicker(props: ITimePicker) {
 										setHour(h)
 									}
 								}}
-								className={cn('p-1 px-3 rounded-md cursor-pointer hover:bg-muted', {
-									'bg-primary-light hover:bg-primary-light': hour === h,
+								className={cn('tw-p-1 tw-px-3 tw-rounded-md tw-cursor-pointer hover:tw-bg-muted', {
+									'tw-bg-primary-light hover:tw-bg-primary-light': hour === h,
 								})}
 							>
 								{String(h).padStart(2, '0')}
@@ -85,7 +85,7 @@ export function TimePicker(props: ITimePicker) {
 						))}
 					</div>
 
-					<div className="h-full overflow-auto px-2">
+					<div className="tw-h-full tw-overflow-auto tw-px-2">
 						{minutes?.map((m) => (
 							<div
 								id={`m-${m}`}
@@ -95,8 +95,8 @@ export function TimePicker(props: ITimePicker) {
 										setMinute(m)
 									}
 								}}
-								className={cn('p-1 px-3 rounded-md cursor-pointer hover:bg-muted', {
-									'bg-primary-light hover:bg-primary-light': minute === m,
+								className={cn('tw-p-1 tw-px-3 tw-rounded-md tw-cursor-pointer hover:tw-bg-muted', {
+									'tw-bg-primary-light hover:tw-bg-primary-light': minute === m,
 								})}
 							>
 								{String(m).padStart(2, '0')}
@@ -105,7 +105,7 @@ export function TimePicker(props: ITimePicker) {
 					</div>
 				</div>
 
-				<div className="flex items-center justify-between border-t p-2">
+				<div className="tw-flex tw-items-center tw-justify-between tw-border-t tw-p-2">
 					<Button
 						size="sm"
 						variant="ghost"

@@ -16,6 +16,7 @@ export * from '@/components/fields/Checkbox'
 export * from '@/components/fields/RadioGroup'
 export * from '@/components/fields/Select'
 export * from '@/components/fields/Switch'
+export * from '@/components/fields/TextField'
 
 export * from '@/components/loader/Loader'
 
@@ -23,6 +24,7 @@ export * from '@/components/menu/DropdownMenu'
 
 export * from '@/components/table/Pagination'
 export * from '@/components/table/ReactTable'
+export * from '@/components/ui/table'
 
 export * from '@/components/tooltip/Tooltip'
 

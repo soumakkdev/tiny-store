@@ -15,7 +15,7 @@ const Dialog = (props: DialogProps) => {
 	const { open, onClose, showCross, children, contentClassName } = props
 	return (
 		<Transition.Root show={open} as={Fragment}>
-			<DialogRoot as="div" className="relative z-40" open={open} onClose={onClose}>
+			<DialogRoot as="div" className="tw-relative tw-z-40" open={open} onClose={onClose}>
 				<Transition.Child
 					as={Fragment}
 					enter="ease-out duration-300"
@@ -25,35 +25,35 @@ const Dialog = (props: DialogProps) => {
 					leaveFrom="opacity-100"
 					leaveTo="opacity-0"
 				>
-					<div className="fixed inset-0 bg-background/80 backdrop-blur-sm bg-opacity-75 transition-opacity" />
+					<div className="tw-fixed tw-inset-0 tw-bg-background/80 tw-backdrop-blur-sm tw-bg-opacity-75 tw-transition-opacity" />
 				</Transition.Child>
 
-				<div className="fixed inset-0 z-10 w-screen overflow-y-auto">
-					<div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+				<div className="tw-fixed tw-inset-0 tw-z-10 tw-w-screen tw-overflow-y-auto">
+					<div className="tw-flex tw-min-h-full tw-items-end tw-justify-center tw-p-4 tw-text-center sm:tw-items-center sm:tw-p-0">
 						<Transition.Child
 							as={Fragment}
-							enter="ease-out duration-300"
-							enterFrom="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-							enterTo="opacity-100 translate-y-0 sm:scale-100"
-							leave="ease-in duration-200"
-							leaveFrom="opacity-100 translate-y-0 sm:scale-100"
-							leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+							enter="tw-ease-out tw-duration-300"
+							enterFrom="tw-opacity-0 tw-translate-y-4 sm:tw-translate-y-0 sm:tw-scale-95"
+							enterTo="tw-opacity-100 tw-translate-y-0 sm:tw-scale-100"
+							leave="tw-ease-in tw-duration-200"
+							leaveFrom="tw-opacity-100 tw-translate-y-0 sm:tw-scale-100"
+							leaveTo="tw-opacity-0 tw-translate-y-4 sm:tw-translate-y-0 sm:tw-scale-95"
 						>
 							<DialogRoot.Panel
 								className={cn(
-									'relative transform overflow-hidden rounded-lg max-w-lg bg-popover p-5 text-left shadow-xl border transition-all sm:my-8 sm:w-full',
+									'tw-relative tw-transform tw-overflow-hidden tw-rounded-lg tw-max-w-lg tw-bg-popover tw-p-5 tw-text-left tw-shadow-xl tw-border tw-transition-all sm:tw-my-8 sm:tw-w-full',
 									contentClassName
 								)}
 							>
-								<div className="space-y-4">{children}</div>
+								<div className="tw-space-y-4">{children}</div>
 
 								{showCross && (
 									<button
 										onClick={onClose}
-										className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground"
+										className="tw-absolute tw-right-4 tw-top-4 tw-rounded-sm tw-opacity-70 tw-ring-offset-background tw-transition-opacity hover:tw-opacity-100 focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-ring focus:tw-ring-offset-2 disabled:tw-pointer-events-none data-[state=open]:tw-bg-accent data-[state=open]:tw-text-muted-foreground"
 									>
-										<X className="h-4 w-4" />
-										<span className="sr-only">Close</span>
+										<X className="tw-h-4 tw-w-4" />
+										<span className="tw-sr-only">Close</span>
 									</button>
 								)}
 							</DialogRoot.Panel>
@@ -71,17 +71,17 @@ interface IDialogHeader extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 const DialogHeader = ({ className, children, title, titleClassName, ...props }: IDialogHeader) => (
-	<div className={cn('flex text-center sm:text-left', className)} {...props}>
+	<div className={cn('tw-flex tw-text-center sm:tw-text-left', className)} {...props}>
 		{children ? <>{children}</> : <DialogTitle className={titleClassName}>{title}</DialogTitle>}
 	</div>
 )
 
 const DialogFooter = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
-	<div className={cn('flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2', className)} {...props} />
+	<div className={cn('tw-flex tw-flex-col-reverse sm:tw-flex-row sm:tw-justify-end sm:tw-space-x-2', className)} {...props} />
 )
 
 const DialogTitle = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
-	<DialogRoot.Title className={cn('text-lg font-semibold leading-none tracking-tight', className)} {...props} />
+	<DialogRoot.Title className={cn('tw-text-lg tw-font-semibold tw-leading-none tw-tracking-tight', className)} {...props} />
 )
 
 export { Dialog, DialogFooter, DialogHeader, DialogTitle }

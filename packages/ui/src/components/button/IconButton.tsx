@@ -3,18 +3,18 @@ import { VariantProps, cva } from 'class-variance-authority'
 import React, { ReactNode } from 'react'
 
 const buttonVariants = cva(
-	'inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
+	'tw-inline-flex tw-items-center tw-justify-center tw-whitespace-nowrap tw-rounded-md tw-text-sm tw-font-medium tw-ring-offset-background tw-transition-colors focus-visible:tw-outline-none focus-visible:tw-ring-2 focus-visible:tw-ring-ring focus-visible:tw-ring-offset-2 disabled:tw-pointer-events-none disabled:tw-opacity-50',
 	{
 		variants: {
 			variant: {
-				default: 'border border-input bg-background hover:bg-accent hover:text-accent-foreground',
-				secondary: 'bg-secondary text-secondary-foreground hover:bg-secondary/80',
-				ghost: 'hover:bg-accent hover:text-accent-foreground',
+				default: 'tw-border tw-border-input tw-bg-background hover:tw-bg-accent hover:tw-text-accent-foreground',
+				secondary: 'tw-bg-secondary tw-text-secondary-foreground hover:tw-bg-secondary/80',
+				ghost: 'hover:tw-bg-accent hover:tw-text-accent-foreground',
 			},
 			size: {
-				default: 'h-8 w-8',
-				sm: 'h-7 w-7 rounded-md',
-				lg: 'h-10 w-10 rounded-md',
+				default: 'tw-h-8 tw-w-8',
+				sm: 'tw-h-7 tw-w-7 tw-rounded-md',
+				lg: 'tw-h-10 tw-w-10 tw-rounded-md',
 			},
 		},
 		defaultVariants: {

@@ -1,6 +1,6 @@
-import '@/styles/globals.css'
-import '@tiny/ui/dist/index.css'
 import 'keen-slider/keen-slider.min.css'
+import '@tiny/ui/dist/index.css'
+import '@/styles/globals.css'
 
 import type { AppProps } from 'next/app'
 import { Inter } from 'next/font/google'
