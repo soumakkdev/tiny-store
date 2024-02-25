@@ -29,9 +29,12 @@ model Product {
   status      String // active, draft
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
-  price       Float
-  images      Json[]
-  sku         String
+
+  price    Float
+  discount Int?
+
+  images Json[]
+  sku    String
 }
 
 model OrderItem {

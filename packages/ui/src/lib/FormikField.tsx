@@ -21,6 +21,7 @@ export const FormikField = (props: IField) => {
 
 	const fieldProps = {
 		...field,
+		id: name,
 		value: field?.value ?? '',
 		error: (meta.touched && meta.error) || undefined,
 	}

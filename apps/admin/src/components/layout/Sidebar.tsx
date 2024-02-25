@@ -21,7 +21,7 @@ export default function Sidebar() {
 	return (
 		<>
 			<Drawer open={sidebarOpen} onClose={() => setSidebarOpen(false)}>
-				<div className="p-0 bg-surface1 text-white">
+				<div className="p-0 bg-card text-white">
 					<div className="flex grow flex-col gap-y-5 overflow-y-auto  px-6 pb-2 ring-1 ring-white/10">
 						<div className="flex h-16 shrink-0 items-center">
 							<img className="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company" />
@@ -53,7 +53,7 @@ export default function Sidebar() {
 			</Drawer>
 
 			<div className="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
-				<div className="flex grow flex-col gap-y-2 overflow-y-auto bg-surface1 px-6">
+				<div className="flex grow flex-col gap-y-2 overflow-y-auto bg-card px-6">
 					<div className="flex h-16 shrink-0 items-center">
 						<img className="h-16 w-auto" src="/icons/nike-logo.svg" alt="Nike" />
 					</div>
@@ -68,13 +68,11 @@ export default function Sidebar() {
 												<Link
 													href={item.href}
 													className={cn(
-														isActive
-															? 'bg-surface2 text-foreground'
-															: 'text-foreground hover:text-foreground hover:bg-surface2',
-														'group flex items-center gap-x-3 rounded-lg px-3 py-1 text-sm leading-6 font-medium'
+														isActive ? 'bg-accent text-foreground ' : 'text-foreground hover:text-foreground',
+														'group flex items-center gap-x-3 rounded-lg px-4 py-2 text-sm leading-6 font-medium hover:bg-muted focus-visible:bg-muted focus-visible:outline-none'
 													)}
 												>
-													<item.icon className="h-4 w-4 shrink-0" aria-hidden="true" />
+													<item.icon className="h-5 w-5 shrink-0" aria-hidden="true" />
 													{item.name}
 												</Link>
 											</li>

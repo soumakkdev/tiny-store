@@ -1,8 +1,13 @@
 import Layout from '@/components/layout/Layout'
+import ImageUploadField from '@/components/products/ImageUploadField'
 import { useAddProduct } from '@/components/products/Products.query'
-import { Button, FormikField, Select, TextField } from '@tiny/ui'
-import { FormikProvider, useFormik } from 'formik'
+import { IProductImages, getProductImagesReqBody } from '@/components/products/Products.utils'
+import { useForm } from '@tanstack/react-form'
+import { IAddProductReq } from '@tiny/types'
+import { Button, Select, TextField } from '@tiny/ui'
 import { useRouter } from 'next/router'
+import { toInt } from 'radash'
+import { useState } from 'react'
 
 enum ProductStatus {
 	Active = 'active',
@@ -20,7 +25,7 @@ const statusOptions = [
 	},
 ]
 
-const categories = ['Lifestyle', 'Jordan', 'Running', 'Basketball', 'Football', 'Gym', 'Skateboarding', 'Golf', 'Tennis', 'Athletics', 'Walking']
+const categories = ['Electronics', 'Mobiles', 'Shoes', 'Fashion']
 
 const categoriesOptions = categories?.map((c) => ({
 	label: c,
@@ -30,17 +35,39 @@ const categoriesOptions = categories?.map((c) => ({
 export default function AddProduct() {
 	const { back } = useRouter()
 	const { mutate: addProduct } = useAddProduct()
+	const [productImages, setProductImages] = useState<IProductImages>(null)
 
-	const formik = useFormik({
-		initialValues: { name: '', description: '', variants: [{}] },
-		onSubmit,
+	const { Provider, handleSubmit, Field } = useForm({
+		defaultValues: {
+			name: '',
+			description: '',
+			price: null,
+			sku: '',
+			status: 'draft',
+			category: null,
+		},
+		onSubmit: async ({ value }) => {
+			// Do something with form data
+			console.log(value)
+		},
 	})
 
-	function onSubmit(values: any) {
+	async function onSubmit(values: any) {
 		console.log(values)
+		return
+		const images = await getProductImagesReqBody(productImages)
+		const reqBody: IAddProductReq = {
+			category: values?.category,
+			description: values?.description,
+			name: values?.name,
+			price: values?.price,
+			sku: values?.sku,
+			status: values?.status,
+			images,
+		}
 		addProduct(
 			{
-				body: values,
+				body: reqBody,
 			},
 			{
 				onSuccess: (data) => {
@@ -54,35 +81,93 @@ export default function AddProduct() {
 	}
 
 	return (
-		<Layout
-			title="Add Product"
-			action={
-				<>
-					<Button onClick={back} variant="secondary">
-						Cancel
-					</Button>
-					<Button onClick={() => formik.handleSubmit()}>Confirm</Button>
-				</>
-			}
-		>
-			<FormikProvider value={formik}>
-				<div className="space-y-4">
-					<div className="max-w-lg mx-auto space-y-3 bg-surface2 p-5 rounded-lg border">
-						<FormikField name="name">
-							<TextField label="Product Name" />
-						</FormikField>
-						<FormikField name="description">
-							<TextField label="Description" />
-						</FormikField>
-						<FormikField name="status">
-							{({ value, onChange }) => <Select label="Status" options={statusOptions} value={value} onChange={onChange} />}
-						</FormikField>
-						<FormikField name="category">
-							{({ value, onChange }) => <Select label="Category" options={categoriesOptions} value={value} onChange={onChange} />}
-						</FormikField>
+		<Layout title="Add Product" action={<></>}>
+			<Provider>
+				<div className="space-y-5">
+					<div className="max-w-lg space-y-3 mt-8">
+						<Field name="name">
+							{(field) => (
+								<TextField
+									name={field.name}
+									value={field.state.value}
+									onBlur={field.handleBlur}
+									onChange={(e) => field.handleChange(e.target.value)}
+									label="Product Name"
+								/>
+							)}
+						</Field>
+						<Field name="description">
+							{(field) => (
+								<TextField
+									name={field.name}
+									value={field.state.value}
+									onBlur={field.handleBlur}
+									onChange={(e) => field.handleChange(e.target.value)}
+									label="Description"
+								/>
+							)}
+						</Field>
+						<Field name="price">
+							{(field) => (
+								<TextField
+									type="number"
+									name={field.name}
+									value={field.state.value}
+									onBlur={field.handleBlur}
+									onChange={(e) => field.handleChange(toInt(e.target.value))}
+									label="Price"
+								/>
+							)}
+						</Field>
+						<Field name="sku">
+							{(field) => (
+								<TextField
+									name={field.name}
+									value={field.state.value}
+									onBlur={field.handleBlur}
+									onChange={(e) => field.handleChange(e.target.value)}
+									label="SKU"
+								/>
+							)}
+						</Field>
+						<Field name="status">
+							{(field) => (
+								<Select
+									options={statusOptions}
+									id={field.name}
+									value={field.state.value}
+									onChange={(selected) => field.handleChange(selected)}
+									onBlur={field.handleBlur}
+									label="Status"
+								/>
+							)}
+						</Field>
+						<Field name="category">
+							{(field) => (
+								<Select
+									options={categoriesOptions}
+									id={field.name}
+									value={field.state.value}
+									onChange={(selected) => field.handleChange(selected)}
+									onBlur={field.handleBlur}
+									label="Category"
+								/>
+							)}
+						</Field>
+
+						<ImageUploadField productImages={productImages} onChange={setProductImages} />
+
+						<div className="flex gap-2">
+							<Button onClick={back} variant="secondary">
+								Cancel
+							</Button>
+							<Button type="button" onClick={() => handleSubmit()}>
+								Confirm
+							</Button>
+						</div>
 					</div>
 				</div>
-			</FormikProvider>
+			</Provider>
 		</Layout>
 	)
 }

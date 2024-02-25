@@ -6,6 +6,7 @@ import { IOption } from '@/lib/types'
 export interface ISelect {
 	value?: string
 	onChange?: (value?: string) => void
+	onBlur?: () => void
 	disabled?: boolean
 	options: IOption[]
 	size?: 'sm' | 'md' | 'lg'
@@ -16,16 +17,16 @@ export interface ISelect {
 }
 
 export function Select(props: ISelect) {
-	const { value, onChange, label, disabled, options, size, id, placeholder, className } = props
-	console.log(value)
+	const { value, onChange, label, disabled, options, size, id, placeholder, className, onBlur } = props
 	return (
-		<div>
-			{label ? <Label>{label}</Label> : null}
+		<div className="tw-space-y-1">
+			{label ? <Label htmlFor={id}>{label}</Label> : null}
 
 			<SelectBase value={value ?? undefined} onValueChange={(selected) => onChange?.(selected)}>
 				<SelectTrigger
 					id={id}
 					disabled={disabled}
+					onBlur={onBlur}
 					className={cn(
 						'tw-w-full',
 						{

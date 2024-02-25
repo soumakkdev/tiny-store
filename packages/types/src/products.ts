@@ -4,6 +4,7 @@ export const ZImage = z.object({
 	public_id: z.string().nullable().optional(),
 	url: z.string(),
 })
+export type IImage = z.infer<typeof ZImage>
 
 export const ZAddProductReq = z.object({
 	name: z.string(),
