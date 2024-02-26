@@ -10,7 +10,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, r
 	const { children, loading, disabled, ...rest } = props
 	return (
 		<ButtonBase ref={ref} disabled={disabled || loading} {...rest}>
-			{loading ? <Loader2 className="tw-animate-spin" /> : children}
+			{loading ? <Loader2 className="tw-animate-spin mr-2" /> : null} {children}
 		</ButtonBase>
 	)
 })

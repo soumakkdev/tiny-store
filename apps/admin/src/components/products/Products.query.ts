@@ -1,9 +1,14 @@
 import { fetchWithAuth } from '@/lib/fetch'
-import { IAddProductReq } from '@tiny/types'
+import { IAddProductReq, IProductQueries } from '@tiny/types'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 
-export const useProducts = () => {
-	return useQuery(['products'], () => fetchWithAuth('GET', '/api/admin/products'), {
+export const useProducts = (queries?: IProductQueries) => {
+	const searchParams = new URLSearchParams()
+	Object.entries(queries ?? {}).forEach(([key, value]) => {
+		searchParams.append(key, value)
+	})
+	const url = `/api/admin/products${searchParams.size ? `?${searchParams?.toString()}` : ''}`
+	return useQuery(['products'], () => fetchWithAuth('GET', url), {
 		select: (data) => data.data,
 	})
 }

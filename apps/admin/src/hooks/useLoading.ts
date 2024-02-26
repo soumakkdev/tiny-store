@@ -5,10 +5,12 @@ export default function useLoading() {
 
 	function startLoading() {
 		setLoading(true)
+		document.body.style.cursor = 'wait'
 	}
 
 	function stopLoading() {
 		setLoading(false)
+		document.body.style.cursor = 'default'
 	}
 	return {
 		loading,

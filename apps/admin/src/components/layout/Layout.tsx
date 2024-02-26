@@ -34,8 +34,8 @@ export default function Layout({ children, title, action }: ILayout) {
 				</a>
 			</div>
 
-			<main className="lg:pl-72 h-full">
-				<div className="px-4 sm:px-6 py-6 h-full">
+			<main className="lg:pl-72 ">
+				<div className="px-4 sm:px-6 py-6 ">
 					<header className="mb-4 flex items-center justify-between">
 						<h1 className="font-bold text-2xl">{title}</h1>
 

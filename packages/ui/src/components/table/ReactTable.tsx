@@ -37,7 +37,7 @@ export const ReactTable = ({ columns, data, onRowClick, resizable, className, is
 			<Table className="tw-min-w-full tw-divide-y tw-divide-border" style={{ width: table.getCenterTotalSize() }}>
 				<TableHeader className="tw-min-w-full tw-divide-y tw-divide-border">
 					{table.getHeaderGroups().map((headerGroup) => (
-						<TableRow key={headerGroup.id} className={cn('tw-divide-x tw-divide-border tw-w-[fit-content]', { flex: resizable })}>
+						<TableRow key={headerGroup.id} className={cn('tw-w-[fit-content]', { flex: resizable })}>
 							{headerGroup.headers.map((header) => (
 								<TableHead
 									key={header.id}
@@ -68,7 +68,7 @@ export const ReactTable = ({ columns, data, onRowClick, resizable, className, is
 						{table.getRowModel().rows.map((row) => (
 							<TableRow
 								key={row.id}
-								className={cn('tw-divide-x tw-divide-border tw-w-[fit-content]', { flex: resizable })}
+								className={cn('tw-w-[fit-content]', { flex: resizable })}
 								onClick={() => onRowClick?.(row.original)}
 							>
 								{row.getVisibleCells().map((cell) => (

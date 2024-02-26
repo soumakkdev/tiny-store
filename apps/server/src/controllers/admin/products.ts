@@ -1,12 +1,13 @@
 import { NextFunction, Request, Response } from 'express'
 import prisma from '../../lib/prisma'
 import createHttpError from 'http-errors'
-import { IAddProductReq } from '@tiny/types'
+import { IAddProductReq, IProductQueries } from '@tiny/types'
 import { isEmpty, toInt } from 'radash'
 import { uploadImages } from '../../lib/image'
 
 export async function getProducts(req: Request, res: Response, next: NextFunction) {
 	try {
+		const { pageNo, category, pageSize, search } = req.query as IProductQueries
 		const products = await prisma.product.findMany({})
 		res.json({ data: products })
 	} catch (error: any) {
@@ -48,6 +49,7 @@ export async function addProduct(req: Request, res: Response, next: NextFunction
 			try {
 				reqBody.images = await uploadImages(images, `products/${category}`)
 			} catch (error) {
+				console.log(error)
 				return next(createHttpError.InternalServerError('Error while uploading product images'))
 			}
 		}

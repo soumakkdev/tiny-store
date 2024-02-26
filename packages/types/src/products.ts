@@ -38,3 +38,10 @@ export const ZOrderItem = z.object({
 	images: ZImage.array(),
 })
 export type IOrderItem = z.infer<typeof ZOrderItem>
+
+export interface IProductQueries {
+	pageNo?: number
+	pageSize?: number
+	search?: string
+	category?: string
+}
