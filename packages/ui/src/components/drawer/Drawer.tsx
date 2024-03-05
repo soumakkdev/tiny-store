@@ -44,9 +44,7 @@ export const Drawer = (props: IDrawer) => {
 								<Dialog.Panel className={cn('tw-pointer-events-auto tw-w-screen', width ? `tw-max-w-${width}` : 'tw-max-w-lg')}>
 									<div className="tw-flex tw-h-full tw-flex-col tw-bg-popover tw-py-4 tw-shadow-xl">
 										<div className="tw-px-4 sm:tw-px-6 tw-flex tw-items-start tw-justify-between">
-											{title ? (
-												<Dialog.Title className="tw-text-base tw-font-semibold tw-leading-6">{title}</Dialog.Title>
-											) : null}
+											{title ? <Dialog.Title className="tw-text-base tw-font-semibold tw-leading-6">{title}</Dialog.Title> : null}
 
 											<div className="tw-ml-3 tw-flex tw-h-7 tw-items-center">
 												<button

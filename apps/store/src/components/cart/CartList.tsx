@@ -9,7 +9,9 @@ export default function CartList() {
 			{cartItems?.map((cartItem, idx) => {
 				return (
 					<div key={idx} className="py-3 flex gap-3">
-						<figure>{/* <img src={cartItem.images[0]} alt="" width={80} /> */}</figure>
+						<figure>
+							<img src={cartItem.images[0]?.url} alt="" width={80} />
+						</figure>
 						<div>
 							<p className="font-medium">{cartItem.name}</p>
 							<p>MRP: {formatCurrency(cartItem.price)}</p>

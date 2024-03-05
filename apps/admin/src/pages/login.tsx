@@ -13,8 +13,8 @@ export default function Login() {
 	const { emailPasswordLogin } = useAuth()
 	const formik = useFormik({
 		initialValues: {
-			email: 'admin@nike.com',
-			password: 'nike@admin',
+			email: 'admin@tiny.com',
+			password: 'tiny@admin',
 		},
 		onSubmit,
 	})

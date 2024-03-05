@@ -19,3 +19,11 @@ export function Loader({ className }: { className?: string }) {
 		</svg>
 	)
 }
+
+export function FullScreenLoader({ className }: { className?: string }) {
+	return (
+		<div className={cn('tw-h-full tw-w-full tw-grid tw-place-content-center', className)}>
+			<Loader />
+		</div>
+	)
+}

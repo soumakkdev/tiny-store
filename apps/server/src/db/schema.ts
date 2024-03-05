@@ -5,8 +5,9 @@ export const genderEnum = pgEnum('gender', ['male', 'female'])
 
 export const users = pgTable('users', {
 	id: serial('id').primaryKey(),
+	uid: varchar('uid', { length: 255 }).notNull(),
 	name: varchar('name', { length: 255 }).notNull(),
-	emailId: varchar('email_id', { length: 255 }).notNull(),
+	email: varchar('email', { length: 255 }).notNull(),
 	phoneNo: varchar('phone_no', { length: 255 }),
 })
 

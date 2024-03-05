@@ -1,6 +1,9 @@
 const config = {
 	darkMode: ['class'],
 	content: ['./src/**/*.{ts,tsx}'],
+	corePlugins: {
+		preflight: false,
+	},
 	theme: {
 		container: {
 			center: true,

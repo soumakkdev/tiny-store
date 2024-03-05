@@ -1,12 +1,10 @@
 import Header from '@/components/layout/Header'
-import ProductsList from '@/components/products/ProductsList'
 import React from 'react'
 
-export default function ProductsPage() {
+export default function PlaceOrder() {
 	return (
 		<section className="container h-full">
 			<Header />
-			<ProductsList />
 		</section>
 	)
 }

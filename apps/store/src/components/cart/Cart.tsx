@@ -4,17 +4,19 @@ import CartList from './CartList'
 import CartSummary from './CartSummary'
 import useCart from './useCart'
 import { Inbox } from 'lucide-react'
+import { useRouter } from 'next/router'
 
 export default function Cart({ open, onClose }: { open: boolean; onClose: () => void }) {
 	const { count } = useCart()
+	const { replace } = useRouter()
 	return (
 		<Drawer open={open} title="Cart" onClose={onClose}>
-			<div className="flex flex-col">
+			<div className="flex flex-col flex-1 px-6">
 				{count ? (
 					<>
 						<CartList />
 						<CartSummary />
-						<Button size="lg" className="w-full rounded-full">
+						<Button size="lg" className="w-full rounded-full mt-5" onClick={() => replace('/place-order')}>
 							Place Order
 						</Button>
 					</>

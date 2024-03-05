@@ -1,10 +1,8 @@
-import { useRouter } from 'next/router'
-import React from 'react'
-import { useProductDetails } from './Products.query'
-import { toInt } from 'radash'
 import { formatCurrency } from '@/lib/helpers'
 import { Button } from '@tiny/ui'
+import { useRouter } from 'next/router'
 import useCart from '../cart/useCart'
+import { useProductDetails } from './Products.query'
 
 interface IProductDetailsQuery {
 	productId: string
@@ -20,7 +18,9 @@ export default function ProductDetails() {
 
 	return (
 		<div className="grid grid-cols-5 gap-8">
-			<figure className="col-span-3">{/* <img src={variant?.images[0]} alt="" className="rounded-md" /> */}</figure>
+			<figure className="col-span-3 px-20">
+				<img src={product?.images?.[0]?.url} alt="" className="rounded-md" />
+			</figure>
 
 			<article className="col-span-2 px-8">
 				<h3 className="font-medium text-2xl mb-2">{product?.name}</h3>

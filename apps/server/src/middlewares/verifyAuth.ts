@@ -18,3 +18,24 @@ export async function verifyAdminAuth(req: Request, res: Response, next: NextFun
 		next(createHttpError.Unauthorized(error?.message ?? 'Unauthorized'))
 	}
 }
+
+export interface RequestWithUId extends Request {
+	uid?: string
+}
+
+export async function verifyUserAuth(req: RequestWithUId, res: Response, next: NextFunction) {
+	try {
+		const authorization = req.headers.authorization
+		const token = authorization?.split('Bearer ')[1]
+
+		if (token) {
+			const user = await auth.verifyIdToken(token)
+			req.uid = user.uid
+			next()
+		} else {
+			throw new Error('No token found')
+		}
+	} catch (error) {
+		next(createHttpError.InternalServerError())
+	}
+}

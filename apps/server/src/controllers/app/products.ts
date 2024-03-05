@@ -23,7 +23,7 @@ export async function getProduct(req: Request, res: Response, next: NextFunction
 				.from(productsTable)
 				.where(sql`${productsTable.id} = ${productId}`)
 
-			res.json({ data })
+			res.json({ data: data[0] })
 		} else {
 			throw new Error('Invalid product id ')
 		}

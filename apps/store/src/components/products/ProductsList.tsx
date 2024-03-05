@@ -1,11 +1,11 @@
-import React from 'react'
-import { useProducts } from './Products.query'
+import { FullScreenLoader } from '@tiny/ui'
 import ProductCard from './ProductCard'
+import { useProducts } from './Products.query'
 
 export default function ProductsList() {
 	const { data: products, isLoading, isError } = useProducts()
 
-	if (isLoading) return <p>Loading...</p>
+	if (isLoading) return <FullScreenLoader />
 	if (isError) return <p>Something went wrong. Try again</p>
 
 	return (

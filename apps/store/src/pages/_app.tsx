@@ -1,4 +1,5 @@
 import 'keen-slider/keen-slider.min.css'
+import '@/styles/preflight.css'
 import '@tiny/ui/dist/index.css'
 import '@/styles/globals.css'
 

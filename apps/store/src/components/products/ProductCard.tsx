@@ -12,8 +12,7 @@ export default function ProductCard(props: IProductCard) {
 	return (
 		<Link href={`products/${product.id}`}>
 			<figure className="h-[400px] mb-2">
-				{/* TODO: add alt text */}
-				{/* <img src={variant.images[0]} alt="" className="h-full w-full object-cover" /> */}
+				<img src={product.images[0]?.url} alt="" className="h-full w-full object-cover" />
 			</figure>
 			<div className="flex items-center justify-between">
 				<p className="font-medium">{product.name}</p>

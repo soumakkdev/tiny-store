@@ -1,4 +1,4 @@
-import { User, onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth'
+import { User, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth'
 import { useContext } from 'react'
 import { useState } from 'react'
 import { ReactNode } from 'react'
@@ -7,11 +7,13 @@ import { auth } from './firebase'
 import { useEffect } from 'react'
 import nookies from 'nookies'
 import { useRouter } from 'next/router'
-import { ILoginParams } from '@tiny/types'
+import { ILoginParams, ISignUpFormFields, ISignUpReqBody } from '@tiny/types'
+import { fetchWithAuth, fetchWithoutAuth } from './fetch'
 
 interface IAuthContext {
 	user: User | null
 	emailPasswordLogin: (params: ILoginParams) => void
+	signup: (params: ISignUpFormFields) => void
 	logout: () => void
 	isLoading: boolean
 }
@@ -24,11 +26,13 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 	const [isLoading, setIsLoading] = useState(true)
 
 	useEffect(() => {
-		const unsubscribe = onAuthStateChanged(auth, async (user) => {
-			const token = await user?.getIdToken()
-			setIsLoading(user === null)
+		const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
+			const token = await firebaseUser?.getIdToken()
+			setIsLoading(firebaseUser === null)
 			if (token) {
+				const user = await fetchWithAuth('GET', '/api/auth/user')
 				setUser(user)
+				console.log(user)
 				nookies.set(undefined, 'token', token, { path: '/' })
 			} else {
 				setIsLoading(false)
@@ -42,11 +46,22 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 		await signInWithEmailAndPassword(auth, params.email, params.password)
 	}
 
+	const signup = async (params: ISignUpFormFields) => {
+		const userCredentials = await createUserWithEmailAndPassword(auth, params.email, params.password)
+		const reqBody: ISignUpReqBody = {
+			email: params.email,
+			name: params.name,
+			phoneNo: params.phoneNo,
+			uid: userCredentials.user.uid,
+		}
+		await fetchWithoutAuth('POST', '/api/auth/signup', reqBody)
+	}
+
 	const logout = async () => {
 		await signOut(auth)
 	}
 
-	const contextValues = { user, emailPasswordLogin, logout, isLoading }
+	const contextValues = { user, emailPasswordLogin, logout, signup, isLoading }
 	return (
 		<AuthContext.Provider value={contextValues}>
 			<AuthWrapper>{children}</AuthWrapper>
